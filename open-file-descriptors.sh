@@ -10,7 +10,7 @@ fi
 if [[ "$1" =~ ^[0-9]+$ ]]; then
   # If input is a PID
   PID=$1
-  COUNT=$(ls -l /proc/$PID/fd 2>/dev/null | wc -l)
+  COUNT=$(ls /proc/$PID/fd 2>/dev/null | wc -l)
   LIMIT=$(grep "open files" /proc/$PID/limits 2>/dev/null)
   echo "Process $PID is using $COUNT file descriptors"
   echo "Limits: $LIMIT"
